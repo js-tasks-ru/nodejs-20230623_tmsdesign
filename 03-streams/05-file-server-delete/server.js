@@ -14,18 +14,18 @@ server.on("request", (req, res) => {
   switch (req.method) {
     case "DELETE":
       try {
-        if (!fs.existsSync(`${__dirname}/files/${pathname}`)) {
-          res.statusCode = 404;
-          res.end("the file doesn't exists");
-          break;
-        }
         if (pathname.includes("/")) {
           res.statusCode = 400;
           res.end("bad request");
           break;
         }
+        if (!fs.existsSync(`${__dirname}/files/${pathname}`)) {
+          res.statusCode = 404;
+          res.end("the file doesn't exist");
+          break;
+        }
         fs.unlink(`${__dirname}/files/${pathname}`, () => {
-          res.statusCode = 201;
+          res.statusCode = 200;
           res.end("success");
         });
       } catch (error) {
