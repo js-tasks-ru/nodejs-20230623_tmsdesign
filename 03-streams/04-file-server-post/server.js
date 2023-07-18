@@ -29,7 +29,7 @@ server.on("request", (req, res) => {
       }
       const stream = fs.createWriteStream(`${__dirname}/files/${pathname}`);
       const limitedStream = new LimitSizeStream({
-        limit: 1024,
+        limit: 1048576,
         encoding: "utf-8",
       });
 
