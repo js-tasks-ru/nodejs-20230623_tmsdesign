@@ -36,7 +36,7 @@ server.on("request", (req, res) => {
       req.pipe(limitedStream).pipe(stream);
 
       stream.on("finish", () => {
-        res.statusCode = 200;
+        res.statusCode = 201;
         res.end("success");
       });
       limitedStream.on("error", (error) => {
